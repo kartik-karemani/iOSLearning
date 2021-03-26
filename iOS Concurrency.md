@@ -109,3 +109,29 @@ dispatch_async(queue, ^{
     // this will never be reached
 }); **
 
+
+Operation : It is a class that encapsultes unit work that can be used later. It is used with Operation queue.
+States :
+isReady : when operation is initiated. it is in isReady state.
+isExecuting : when start is called for operation it is in isExecuting state.
+isCancelled : when cancel is called for operation it is in isCancelled state.
+isFinished : When operation is finished.
+
+You can create operation using **BlockOperation** which subclass of Operation or custom subclass of the Operation.
+By default operation runs synchronously. Should not start on main thread. 
+Multiple blocks can be added to BlockOperation.
+
+To create **custom subclass of the Operation**. We need to override the main method which will have all the work defined that operation needs to perform.
+
+We can start the operation by calling start() on it but it runs synchonously so instead we can add the operation to the operation queue and it will take care.
+Operation queue executes the operation which are ready.
+
+Ex:
+**var oprQueue = OperationQueue()
+oprQueue.addOperation { print("Hello"); sleep(2)}
+oprQueue.addOperation { print("My"); sleep(2)}
+oprQueue.addOperation { print("Name"); sleep(2)}
+oprQueue.addOperation { print("Is"); sleep(2)}
+oprQueue.addOperation { print("Kartik"); sleep(2)}**
+
+
