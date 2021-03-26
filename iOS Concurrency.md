@@ -199,3 +199,8 @@ class AsynSumOperation : AsyncOperation {
 }
 
 We can cancel the operation.
+Dependecy can be created between the operations.
+For let opr1 = //
+    let opr2 = //
+    opr1.addDependency(opr2)
+    This means that opr1 depends on the opr2.
