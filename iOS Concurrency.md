@@ -198,4 +198,4 @@ class AsynSumOperation : AsyncOperation {
     }
 }
 
-
+We can cancel the operation.
