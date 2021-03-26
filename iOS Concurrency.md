@@ -135,3 +135,67 @@ oprQueue.addOperation { print("Is"); sleep(2)}
 oprQueue.addOperation { print("Kartik"); sleep(2)}**
 
 
+Asynchonous operation :
+
+extension AsyncOperation {
+    enum State:String{
+        case ready,executing,finished
+        fileprivate var keyPath: String{
+            "is\(rawValue.capitalized)"
+        }
+    }
+}
+class AsyncOperation : Operation {
+    var state = State.ready{
+        willSet{
+            willChangeValue(forKey:state.keyPath)
+            willChangeValue(forKey:newValue.keyPath)
+        }didSet{
+            didChangeValue(forKey: oldValue.keyPath)
+            didChangeValue(forKey: state.keyPath)
+        }
+    }
+    
+    override var isExecuting: Bool {
+        state == .executing
+    }
+    override var isFinished: Bool {
+        state == .finished
+    }
+    override var isAsynchronous: Bool {
+        return true
+    }
+    override func start() {
+        if isCancelled{
+            state = .finished
+            return
+        }
+        state = .executing
+        main()
+    }
+    override func cancel() {
+        state = .finished
+    }
+}
+
+
+class AsynSumOperation : AsyncOperation {
+    
+    var a:Int
+    var b:Int
+    var result:Int?
+    init(first:Int,second:Int) {
+        a = first
+        b = second
+        super.init()
+    }
+    override func main() {
+        DispatchQueue.global().async {
+            sleep(2)
+            self.result = self.a+self.b
+            self.state = .finished
+        }
+    }
+}
+
+
