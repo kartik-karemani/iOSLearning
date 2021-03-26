@@ -92,7 +92,10 @@ Concurrrency Problems :
                       Low Priority task needs resource so it locks it. When medium priority task executes processor puts Low Priority task on sleep but it still     have lock. Higher priority task runs due to which medium priority task is sleep. Since high priority task tries to acquire the lock but as it is with low priority task it goes on sleep. Hence since medium priority task doesnot want resouce it starts. Here medium priority task is running before high priority task so priority inversion took place.
 2. Race Condition
     This happens when multiple threads try to access same resource and corrupts it.
-    For this we can use Dispatch barrier. Queue becoems when barried task is added.
+    For this we can use Dispatch barrier. Queue becoems serial when barried task is added for that task.
+    Thread sanitizer can be used to detect if race condition has occured in the code.
+    
+    
 4. Deadlock : It happens when 2 threads get struck as they are waiting to each other to finish.
 
 **dispatch_queue_t queue = dispatch_queue_create("my.label", DISPATCH_QUEUE_SERIAL);
