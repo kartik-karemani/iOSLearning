@@ -82,6 +82,8 @@ Refer this link to understand diff between http and websocket protocol : https:/
 
 Authentication :
 If one of the session task requires authentication then session task delegate method is called : didReceiveAuthentication. If it doesnot habdle it then delegate method from session delegate is called to handle.
+Refer : https://developer.apple.com/documentation/foundation/url_loading_system/handling_an_authentication_challenge
+
 
 App Transport Security : It is to make sure that app is connecting to secured server. Like https and not http. For example if we are connecting to server which does not have valid certificate from certificate authority urlsession throws ssl error and if we try to connect to http url then urlsession wont allow this.
 But info.plist have allowArbitrary Loads option which can be set as true to allow the same.
