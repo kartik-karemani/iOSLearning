@@ -50,3 +50,79 @@ Nil Coalescing Operator:
 It is used to unwrap the optional. In case the value of optional returns nil then it will return a default value. For ex :
 **let optionalInt : Int? = nil
 let requiredInt = optionalInt ?? 0**
+
+Collections:
+Tuples: In iOS we can store the related data as a single unit using Tuples. For example in case to store the location we need to store both longitude and latitude.
+**let location : (lat:CGFloat,long:CGFloat) = (100.0,200.0)
+location.lat
+location.long**
+Now this constant is having 2 pieces of information.
+**let (anotherLocLat,anotherLocLong) = location
+anotherLocLat
+anotherLocLong**
+
+Arrays:
+It is used to store the elements of same type.
+These are ordered type.Each element in array can be accessed using index.
+**let pastries : [String] = ["cookie","cupcake","donut"]**
+
+**var pastriesVar : [String] = []
+pastriesVar.append("abcd")
+pastriesVar.append("gggg")**
+
+We can fetch the elements from an array using the index.
+**pastriesVar[0]**
+
+Different operations on array :
+1. count - To get the count of the array
+2. isEmpty - Check if array is empty
+3. contains - Check if array contains a particular element or no
+
+Control Flows:
+while Loop : Here a set of statements are executed till a condition evalutes to true. Here condition is evaluated first and if its true then set of statements are executed.
+**var index = 1
+while index < 10 {
+    print(index)
+    index += 1
+}
+**
+
+Repeat while example: It is going to execute the statement at least once. Here condition is evaluated after statements are executed.
+**index = 1
+repeat {
+    print(index)
+    index += 1
+}while(index<10)**
+
+For Loop: Here we are executing a set of statement for particular number of times.
+**for i in 0...5 {
+    print(i)
+}
+**
+**for _ in 0...5 {
+    print("testing")
+}**
+
+Iterating over collection:
+For loop can be used to iterate over a collection.
+**let days = ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"]
+for day in days {
+    print(day)
+}**
+
+break : We can use break statement to exit from the loop based on some condition.
+**let days = ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"]
+for day in days {
+    if day == "Thursday" {
+        break
+    }
+    print(day)
+}**
+continue : If we dont want to execute some statement for some elements while iterating the collection we can use continue.
+**let days = ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"]
+for day in days {
+    if day == "Thursday" {
+        continue
+    }
+    print(day)
+}**
