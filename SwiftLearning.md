@@ -30,3 +30,23 @@ IF-ELSE : It is used to execute a set of statements based on some condition :
 
 Ternary Operator : Here an expression is checked. Then value is set based on that.
 **let betterStudent = studentPassed ? "YES":"NO"**
+
+Optionals: Marking a type as options represents that it can have value or cannot have a value. 
+**let betterStudent = studentPassed ? "YES":"NO"
+var petName:String?
+petName = "Mango"
+print(petName)**
+
+Forced unwrapping optional:
+**print(petName!)** - This is not a recomended way to unwrap the optionals as it may lead to crash the app in case the petName is nil. 
+Use forced unwrapping only if you know the option is having a value.
+
+Optional Binding: - Way to safely unwrap the optional.
+**if let petName = petName {
+    print("Name of the pet is \(petName)")
+}**
+
+Nil Coalescing Operator:
+It is used to unwrap the optional. In case the value of optional returns nil then it will return a default value. For ex :
+**let optionalInt : Int? = nil
+let requiredInt = optionalInt ?? 0**
