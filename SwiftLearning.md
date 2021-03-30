@@ -148,3 +148,29 @@ setObj.contains(444)
 setObj.count
 setObj.insert(333)
 print(setObj)**
+    
+
+1. Named Types and Compund Types
+ Named Types : Classes , Structure, Enum and protocol
+ Compund Types : Tuples, Functions.
+2. Reference and Value types
+
+Function : 
+Functions in swift perform some task. It can reused across app by calling it thus avoiding the duplication.
+**func sayHello() {
+    print("Hello !!!")
+}
+sayHello()**
+Functions with parameters:
+**func sayHello(msg:String) {
+    print(msg)
+}
+sayHello(msg: "Hello Everyone !!!")**
+
+We can also set the default values for the function parameter.
+
+Function returning a value:
+**func sayHelloMessageFunction(msg:String) -> String {
+    return "Hello \(msg)"
+}
+print(sayHelloMessageFunction(msg: "Peter"))**  
