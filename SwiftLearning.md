@@ -33,6 +33,19 @@ Ternary Operator : Here an expression is checked. Then value is set based on tha
 
 Optionals: Marking a type as options represents that it can have value or cannot have a value. 
 **let betterStudent = studentPassed ? "YES":"NO"
+
+
+Dictionary:
+It is an unordered collection type. It stores the data in key value pair. keys in the dictionary should be unique.
+**var emptyDictionary : [String:Int] = [:]
+var namesAndPet = ["a":"A","b":"B"]**
+
+Iterating through dictionary values:
+**for (keyInfo,valueInfo) in namesAndPet {
+    print("key is :\(keyInfo) and value is : \(valueInfo)")
+}**
+
+
 var petName:String?
 petName = "Mango"
 print(petName)**
@@ -126,3 +139,12 @@ for day in days {
     }
     print(day)
 }**
+
+Sets: It is unordered collection of values with same data type. It contains the unique value. We can compare the different sets.
+**var setObj : Set<Int> = [1,2,3,4,5,1]
+print(setObj)
+setObj.contains(3)
+setObj.contains(444)
+setObj.count
+setObj.insert(333)
+print(setObj)**
