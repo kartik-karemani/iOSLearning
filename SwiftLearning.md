@@ -174,3 +174,32 @@ Function returning a value:
     return "Hello \(msg)"
 }
 print(sayHelloMessageFunction(msg: "Peter"))**  
+
+Structure:
+Structure is a type used to encapsulate the related data together. It defines the properties and methods as well.
+Structure automatically generates the initializer.
+When a method defined in the structure tries to mutate the structure properety then it should be explicitly declared as mutating.
+If structure type is assigned to a constant then it cannot mutate the structure property.
+If structure type is assigned to a variable then it can mutate the structure property.
+Structure is a value type.
+
+**struct Student {
+    let name:String
+    var grade:Int
+    var pet:String?
+    func getPassStatus(lowestPass:Int = 50) -> Bool {
+        return grade >= lowestPass
+    }
+    mutating func addBonus(){
+        grade += 5
+    }
+}
+var kartik = Student(name: "kartik", grade: 75, pet: nil)
+kartik.getPassStatus()
+kartik.grade = 50
+kartik.grade**
+
+Classes:
+Classes are similar to that of structure i.e. they have properties,methods and initializers but they are reference types.
+Classes do not get automatic generated initializer that structs do.
+
