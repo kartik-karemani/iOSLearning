@@ -257,3 +257,57 @@ printResult(function, 5, 1)******
 function(4,2)
 
 Such function using another function as a parameter is called higher order function.
+
+Closures:
+It is a block of code used to perform some task. It can be stored in constant or variable or can be passed to some functions. Closure doesnot have name as of functions.We cannot argument label in Closure as compared to the functions.
+**var addClosure = { (a:Int,b:Int)->Int in
+    a+b
+}
+let res = addClosure(1,2)**
+
+
+Functions VS Closure:
+
+1. Function have names whereas Closure doesnot have name.
+2. Function have argument labels whereas it is not allowed in closures
+3. Function have default values for the parameter whereas it is not allowed in the closure.
+
+When we call a function that accepts the closure as last parameter we can use trailing closure syntax.
+
+
+forEach:Used to iterate over a collection. For EX:
+**let prices = [100,200,300,400,500]
+prices.forEach { (price) in
+    print(price)
+}**
+
+map :If we have to perform some operations on all the elements of the array then we can use the map function.
+**let updatedPrice = prices.map { (price) -> Int in
+    return price*2
+}
+updatedPrice**
+
+compactMap: It is used to perform some operation on all elements of the collection. It will add only the resultant data which is not nil.
+**let inputArray = ["1","2","Strinhhg"]
+let outPutArray = inputArray.compactMap { Int($0) }
+outPutArray**
+
+flatMap: If we have collection with in the collection, then it is used to convert that in a single collection.
+**let words = [["a","b","c"],["d","e","f"]]
+let resultData = words.flatMap { (data) -> [String] in
+    return data
+}
+resultData**
+
+filter : We can filter the collection based on the criteria.
+**let dataInfo = [1,2,3,4,5]
+let result = dataInfo.filter { (data) -> Bool in
+    data > 2
+}
+result**
+
+Sort:Used to sort the collection.
+**let sortedData = dataInfo.sorted { (a, b) -> Bool in
+    return a>b
+}
+sortedData**
