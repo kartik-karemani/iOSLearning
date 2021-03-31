@@ -203,3 +203,57 @@ Classes:
 Classes are similar to that of structure i.e. they have properties,methods and initializers but they are reference types.
 Classes do not get automatic generated initializer that structs do.
 
+Function overloading : Creating multiple function with same name but different signature is called Function overloading. Like function with same name can have different number of parameters, different parameter types, return types.
+
+Ex:
+**func printMessage(message:String) {
+    print(message)
+}
+func printMessage(message1:String,message2:String){
+    print(message1+message2)
+}
+printMessage(message: "Hello World")
+printMessage(message1: "Hello", message2: "Everybody")**
+
+Variadic parameters : The parameter list varies here. Like 0 to more then 0 number of input paramters.
+The below method accepts 0 or more number of ints and return an int value. variadic paramter is considered as an array inside the function.
+**func highestGrade(grade:Int...) -> Int {
+    grade.max() ?? 0
+}
+highestGrade(grade: 1,2,3,4,45)**
+
+inout keyword: Function cannot changes the parameters inside the body. For this parameter should be declared as inout keyword.
+**var countInfo = 0
+func incrementAndPrint(_ value: inout Int) {
+    value += 1
+    print(value)
+}
+incrementAndPrint(&countInfo)
+incrementAndPrint(&countInfo)
+incrementAndPrint(&countInfo)
+incrementAndPrint(&countInfo)
+countInfo**
+
+Functions in the swift are just data type. They can be stored in a variable or constants or passed to a function.
+**func printResult(_ operate:(Int,Int)->Int,_ a:Int, _ b: Int) {
+    let result = operate(a,b)
+    print(result)
+}
+
+
+**func add(number1:Int,number2:Int)->Int{
+    number1+number2
+    
+}**
+**var function = add
+printResult(function, 1, 1)
+function(5,5)
+func subtract(number1:Int,number2:Int)->Int{
+    number1-number2
+    
+}
+**function = subtract
+printResult(function, 5, 1)******
+function(4,2)
+
+Such function using another function as a parameter is called higher order function.
