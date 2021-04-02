@@ -311,3 +311,82 @@ Sort:Used to sort the collection.
     return a>b
 }
 sortedData**
+
+
+Properties:
+Stored Property : It is used to store a value.
+**struct Wizard {
+    var firstName:String
+    var lastName:String
+}
+let wizard = Wizard(firstName: "Kartik", lastName: "Karemani")
+wizard.firstName
+wizard.lastName**
+Here firstName and lastName are the stored property.
+Property Observers are something which is called everytime the property is set. i.e willSet(Called before property is set) and didSet(Called after property is set).
+**struct Wizard {
+    var firstName:String {
+        willSet{
+            print(firstName + "will be set to " + newValue)
+        }
+        didSet {
+            if firstName.contains(" ") {
+                print("No Space allowed!!!!")
+                firstName = oldValue
+            }
+        }
+    }
+    var lastName:String
+}**
+
+Type properties : These properties belongs to the type instead of instance. Means for all the instance of the instance type property is common.
+**struct Wizard {
+    static let wizardCommonInfo = "Wizard information"
+    var firstName:String {
+        willSet{
+            print(firstName + "will be set to " + newValue)
+        }
+        didSet {
+            if firstName.contains(" ") {
+                print("No Space allowed!!!!")
+                firstName = oldValue
+            }
+        }
+    }
+    var lastName:String
+}
+Wizard.wizardCommonInfo**
+
+Computed Property : This calculates the value everytime it is accessed.
+**struct Employee{
+    var firstName:String
+    var lastName:String
+    var fullName:String{
+        return firstName+" "+lastName
+    }
+}
+var emp = Employee(firstName: "Kartik", lastName: "Karemani")
+emp.fullName**
+
+Lazy stored properties are not created during initialization and instead they are created when they are invoked.
+Methods are similar to functions but they reside inside a class or a structure.
+Class Methods belongs to type rather then the instance of the type.
+
+
+Inheritance:
+Here subclass inherits the features from the base class like properties, methods and initializers.
+Protocol are the set of rules which an object needs to define inorder to confirm it.
+**class Student : Person {
+    var grades : [Int] = []
+}
+var student = Student(firstName: "Kartik", lastName: "Karemani")
+student.firstName
+student.lastName
+student.grades
+student.grades = [100,200,300,400,500]
+student.grades**
+
+In swift a class can have only one base class. Here student is person. so it cannot inherit from other class. Multiple inheritance is allowed in swift.
+
+Polymorphism : Based on the context a subclass can be treated as its own type or any of the superclass.
+You cannot override computed property with a stored property but other way is fine.
