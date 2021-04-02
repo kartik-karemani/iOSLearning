@@ -390,3 +390,14 @@ In swift a class can have only one base class. Here student is person. so it can
 
 Polymorphism : Based on the context a subclass can be treated as its own type or any of the superclass.
 You cannot override computed property with a stored property but other way is fine.
+
+Swift have requirement tht all stored properties should have initial values.
+A child class needs to first initialize its stored properties then invoke initializers for its super class.
+We can declare an initializer as required due to which all the subclasses needs to implement that initializer.
+
+Designated initializers initialize the stored property of its class and up the hierarcy
+whereas convenience initializers delegates this task to the designated initializers with setting some of the parameters to default value.
+
+A designated initializer must call a designated initializer from its immediate superclass.
+Convenience initializer must call another initializer from same class. i.e it should ulitmately call a designated initializers.
+
