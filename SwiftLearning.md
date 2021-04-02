@@ -401,3 +401,16 @@ whereas convenience initializers delegates this task to the designated initializ
 A designated initializer must call a designated initializer from its immediate superclass.
 Convenience initializer must call another initializer from same class. i.e it should ulitmately call a designated initializers.
 
+Protocols:
+Protocols are the set of properties, methods that represents a requirement. 
+Any class, structure or enum defining those requirement is said to confirm the protocol.
+
+**protocol Animal {
+    var name : String { get }
+}**
+Protocols includes only declaration and not definition.
+Protocol can inerit from other protocol.
+
+Extension : It is used to extend the functionality of class, struct or enum by adding the methods,properties and initializers.
+it can be used to provide default implementation for the protocol methods.
+We cannot add designated initializer and stored property in the extension.
