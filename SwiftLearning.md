@@ -414,3 +414,65 @@ Protocol can inerit from other protocol.
 Extension : It is used to extend the functionality of class, struct or enum by adding the methods,properties and initializers.
 it can be used to provide default implementation for the protocol methods.
 We cannot add designated initializer and stored property in the extension.
+
+Error Handling : It is process of handling error occuring in the code.
+Failable initializder: It can be used for handling error. initializer can return nil if passed input parameter are not valid. For Ex:
+**struct Email {
+    var address:String
+    init?(emailAddress:String) {
+        guard emailAddress.contains("@") else {
+            return nil
+        }
+        self.address = emailAddress
+    }
+}
+let emailKartik = Email(emailAddress: "Kartik@gmail.com")
+let emailIshan = Email(emailAddress: "Ishan")
+if let _ = emailKartik {
+    print("Kartik -Object created")
+}else{
+    print("Kartik -Object Not created")
+}
+if let _ = emailIshan{
+    print("Object created")
+}else{
+    print("Object Not created")
+}**
+
+Another way of handling error : Error object in iOS confirms to Error protocol.Function can throw error. It should be called in do catch block.
+Example :
+**enum MathError:Error{
+    case DiveByZeroError
+}
+func divide(numnerator:Double,denominator:Double) throws -> Double {
+    if denominator == 0 {
+        throw MathError.DiveByZeroError
+    }else{
+        return numnerator/denominator
+    }
+}
+do {
+    let result = try divide(numnerator: 10, denominator: 0)
+    print(result)
+} catch {
+    dump(error)
+}**
+
+For error handling we can also use Return type. It is a type which has info : success or failure and associated object with it.
+**enum MathErrorInfo:Error{
+    case DiveByZeroError
+}
+func divideFunc(numnerator:Double,denominator:Double) -> Result<Double,MathErrorInfo> {
+    if denominator == 0 {
+        return .failure(MathErrorInfo.DiveByZeroError)
+    }else{
+        return .success(numnerator/denominator)
+    }
+}
+let res = divideFunc(numnerator: 10, denominator: 0)
+switch res {
+case .success(let val):
+    print(val)
+case .failure(let error):
+    print(error)
+}**
