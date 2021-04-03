@@ -476,3 +476,22 @@ case .success(let val):
 case .failure(let error):
     print(error)
 }**
+
+
+Values - Isolation
+Reference - Shared Ownership
+Swift Types :
+1. Named : Class, struct, enum and protocol
+2. Compund : Function and Tuple
+
+Diff between Value and Reference Type ----
+If value type is assined to other variable then changing that variable is not going to effect the original data since is copied where as if referece type like class object is assigned to other variable and something is changed then it is reflected in the original data as well.
+
+To mutate the function parameter from with in the function it needs to be marked with inout keyword.
+If method present in value type wants to mutate the property it needs to be marked as mutating.
+
+Methods in class ,enums and struct are passed self paramter. But a method marked as mutating it is passed with inout keyword.
+
+COW : Copy on write ------- Need to study deep
+If their are 2 reference to ABCD class i.e obj1 and obj2.
+Making change in obj1 will effect obj2 as well. To protect before  writing obj1 can create copy of ABCD object. This is called copy on write
