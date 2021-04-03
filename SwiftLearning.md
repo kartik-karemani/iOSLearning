@@ -495,3 +495,80 @@ Methods in class ,enums and struct are passed self paramter. But a method marked
 COW : Copy on write ------- Need to study deep
 If their are 2 reference to ABCD class i.e obj1 and obj2.
 Making change in obj1 will effect obj2 as well. To protect before  writing obj1 can create copy of ABCD object. This is called copy on write
+
+
+Generics:
+Generics is used to create reusable function, type that can be used for other types as well. For ex : if method add acceepts 2 int and adds them and return int
+to add 2 doubles we need to create one more method. instead if we can make add method generic then it will accept other type as well. Example of generic is swift array.
+We can write generic Function, initializer, class, struct and enum
+
+**struct Stack<Element> {
+    var storage : [Element] = []
+    
+    mutating func push(element:Element) {
+        storage.append(element)
+    }
+    
+    mutating func pop() -> Element? {
+        return storage.popLast()
+    }
+    
+    var top : Element? {
+        return storage.last
+    }
+    
+    var isEmpty : Bool {
+        return top == nil
+    }
+}
+var stack = Stack<Int>()
+stack.push(element: 23)
+stack.push(element: 24)
+stack.top**
+    
+Here <Element> indicates placeholder type Element. It is replaced by actual type during the initialization.
+
+Genenric Constraint : Here we can add constraint to the placeholder type so when actual type is given while creating instance then if actual type shhould satisfy the constraint.
+**func add<Element:Numeric>(a:Element,b:Element) -> Element {
+    return a+b
+}
+add(a: 55, b: 55)**
+
+Associated Types: These are used to make the protocol generic.
+protocol Persistable {
+    associatedtype Entity : NSManagedObject
+    func create(entity:Entity)
+    func read(entity:Entity)
+    func update(entity:Entity)
+    func delete(entity:Entity)
+}
+
+struct EmployeeEntity : Persistable {
+    typealias Entity = Employee
+    
+    func create(entity:Employee) {
+        
+    }
+    func read(entity:Employee) {
+        
+    }
+    func update(entity:Employee) {
+        
+    }
+    func delete(entity:Employee){
+        
+    }
+}
+Here Persistable is a generic protocol created using associated type. All the methods take input of type Entity which is constrained to be of type NSManagedOBject.
+EmployeeEntity confirms thihs protocl. It infers entity as employee.
+
+
+Conditional Conformance :
+In below code Pair is equatable only if Element is equatable. This is called as conditional conformance.
+struct Pair<Element> {
+    var firstName:Element
+    var lastName :Element
+}
+extension Pair : Equatable where Element : Equatable {
+    
+}
