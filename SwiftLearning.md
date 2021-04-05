@@ -592,3 +592,28 @@ Strong reference cycle also occurs when you assign closure to class property and
 It can be avoided using closure capture list.
 A capture list can be defined during the closures definition. It defines the rules to capture the reference in the closure body
 
+Optional Chaining:
+Optional chaining is process of calling the property or functiona on the option value. It might be nil. In case it has value then call to property or method is success or else call will return nil value.
+Since the result of the optional chaining can be nil value so result is an option even if property we are accessing is non optional.
+class Person {
+    var residence: Residence?
+}
+class Residence {
+    var numberOfRooms = 1
+}
+**let john = Person()
+if let roomCount = john.residence?.numberOfRooms {
+    print("John's residence has \(roomCount) room(s).")
+} else {
+    print("Unable to retrieve the number of rooms.")
+}
+// Prints "Unable to retrieve the number of rooms."**
+john.residence = Residence()
+**if let roomCount = john.residence?.numberOfRooms {
+    print("John's residence has \(roomCount) room(s).")
+} else {
+    print("Unable to retrieve the number of rooms.")
+}
+// Prints "John's residence has 1 room(s)."**
+
+During a optional chaining the type of value we are trying to retrieve will become optional bcoz of optional chaining.
