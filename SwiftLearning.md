@@ -572,3 +572,23 @@ struct Pair<Element> {
 extension Pair : Equatable where Element : Equatable {
     
 }
+
+**Automatic Reference Counting(ARC):**
+ARC is used in iOS to perform the memory management. It manages the memory based on the object ownership. As long as object is needed it statys in the memory but when its no longer needed it is deallocated from the memory.
+An object will stay in the memory as long as their is at least one strong reference to that object i.e. when reference count is greater than zero.
+
+**Strong Reference Cycle:**
+Suppose their are 2 classses Person and Apartment. Instance of Person is stored in john(john is having strong reference to Person) and instance of Apartment is stored in unitA(unitA is hhaving a strong reference to the Apartment). Along with these if Person and Apartment have strong reference to each other. In this case even if we make below objects nil 
+john = nil
+unitA = nil
+Both Person and Apartment are not going to deallocate from the memory and they cant be accessed leading to memory leak.
+All the weak reference to an object becomes nil when it is deallocated.
+
+Resolving the issue:
+One of the property needs to be declared as weak to resolve strong reference cycle issue.
+Use unowned reference only when refernce always refers to instance. ARC will not make unowned reference nil when object is deallocated
+
+Strong reference cycle also occurs when you assign closure to class property and body of the closure captures the instance.
+It can be avoided using closure capture list.
+A capture list can be defined during the closures definition. It defines the rules to capture the reference in the closure body
+
