@@ -617,3 +617,13 @@ john.residence = Residence()
 // Prints "John's residence has 1 room(s)."**
 
 During a optional chaining the type of value we are trying to retrieve will become optional bcoz of optional chaining.
+
+**Conflicting access to the memory : Here same memory location is accessed from mulitple places at the same time.(i.e both read and write operation which corrupts the data)** For ex below:
+**var stepSize = 1
+
+func increment(_ number: inout Int) {
+    number += stepSize
+}
+increment(&stepSize)**
+Here read access of stepSize conflicts with write acces for number.
+
