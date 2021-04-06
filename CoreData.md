@@ -51,3 +51,8 @@ For ex:
     super.awakeFromInsert()
     creationDate = NSDate()
 }**
+
+
+In iOS if we are using table view based layout to display data fetched from Core Data then we can use NSFetchedResultController.
+Initially we need to create an instance of NSFetchResultController. It required NSFetchRequest and managed object context. Then call performFetch, this will fetch the initial info from core data and monitors the changes in managed object context.
+We need to confirm to NSFEtchResultControllerDelegate protocol inorder to automatically update tableview if their is any underline changes in the context. 
