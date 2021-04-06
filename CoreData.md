@@ -58,3 +58,10 @@ Initially we need to create an instance of NSFetchResultController. It required 
 We need to confirm to NSFEtchResultControllerDelegate protocol inorder to automatically update tableview if their is any underline changes in the context. 
 
 We can move the core data initialization code into seperate object to keep the AppDelegate clean.
+
+**Managed Objects and references:**
+By default managed object and managed object context have weak referece to each other. Exception here is : managed object context have strong reference to object that are changed until they are saved. 
+To make context to keep strong reference of the managed objects we can set :  retainsRegisteredObjects as true.
+
+If NSManagedObjects are related to each other then they have strong reference to each other. This may cause memory leak so when these objects are no longer needed the we can invoke : refreshObject:mergeChanges:  method.
+
