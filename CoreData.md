@@ -27,6 +27,8 @@ Creating the Managed Object:
     fatalError("Failure to save context: \(error)")
 }**
 
+Their can be a relationship between 2 NSManagedObject.
+i.e Source entity and destination entity.
 
 - To fetch the objects stored in the Persistance store we can use NSFetchRequest.
 **let moc = …
@@ -64,4 +66,23 @@ By default managed object and managed object context have weak referece to each 
 To make context to keep strong reference of the managed objects we can set :  retainsRegisteredObjects as true.
 
 If NSManagedObjects are related to each other then they have strong reference to each other. This may cause memory leak so when these objects are no longer needed the we can invoke : refreshObject:mergeChanges:  method.
+Types of relationship:
+to-one
+to-many
+many-many
 
+Relationship Delete Rules : Following rules specifies what should happen to destination objects when source object is deleted.
+1. Deny - If their is at least one object at the destination then do not delete the source object.
+2. Nullify - It will remove the relationship and do not delete either of the object.
+3. Cascade - Deleting the source object will delete all the destination objects as well.
+4. No Action - No not delete the destination objects.
+
+Cross store relationshhip is not supported in Core Data.
+Fetched properties are weak one way relationship.
+
+A managed object is said to be a fault if their properties are not yet loaded from the store.
+If persistance object of the Fault managed object is accessed then core data will fetch the data and initializes the property. This is called as Firing the Faults.
+
+A application can have multiple managed object context. If objects in multiple context represents the same data and changes in them wrt context lead to conflict while saving the managed object context.
+
+For ex if application have multiple managed object context and single persistant store coordinator and object is deleted in moc1 then it needs to be informed to the moc2. For this we need to make app register for the notification bcoz in all the cases moc posts notification **NSManagedObjectContextDidSaveNotification**. 
