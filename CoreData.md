@@ -86,3 +86,40 @@ If persistance object of the Fault managed object is accessed then core data wil
 A application can have multiple managed object context. If objects in multiple context represents the same data and changes in them wrt context lead to conflict while saving the managed object context.
 
 For ex if application have multiple managed object context and single persistant store coordinator and object is deleted in moc1 then it needs to be informed to the moc2. For this we need to make app register for the notification bcoz in all the cases moc posts notification **NSManagedObjectContextDidSaveNotification**. 
+
+persistant stores that Core data provides :
+- Sqlite
+- In memory persistant store
+- Binary store
+- XML store
+
+Core Data does not guarantee the security of the store from the untrusted sources.
+Sqlite store offer better security then XML and binary store.
+
+Concurrency is supported in the Core Data. 
+Managed object context can be of 2 patterns : 
+1. NSMainQueueConcurrencyType : It is used in main queue.
+2. NSPrivateQueueConcurrencyType : It creates it seperate queue.
+
+Here we can create private context using concurrency type : NSPrivateQueueConcurrencyType and it as child of main managed object context.
+We can then perform the task inn private context and once done we can save it so that changes are reflected to main context.
+
+To simplify this we can further use method of NSPersistanceContainer class.
+let jsonArray = …
+let container = self.persistentContainer
+container.performBackgroundTask() { (context) in
+    for jsonObject in jsonArray {
+        let mo = EmployeeMO(context: context)
+        mo.populateFromJSON(jsonObject)
+    }
+    do {
+        try context.save()
+    } catch {
+        fatalError("Failure to save context: \(error)")
+    }
+}
+Every time this method(**performBackgroundTask**) is invoked persistant container create new private context and execute the block passed in that queue.
+
+
+
+
