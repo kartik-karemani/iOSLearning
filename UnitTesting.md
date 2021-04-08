@@ -14,3 +14,11 @@ XCAssertLessThan
 XCAssertLessThanEqualTo
 
 Test Driven Development : It is way to make the code written in the app is testable. Here we first write the test cases for the functionaliy before its implementation.
+
+We can do test for synchronous and non- synchronous operation.
+We can write test for asynchronous code using XCTestExpectation.
+Steps :
+1. We need to create instance of the expectation object.
+2. call waitForExpectionn passing the time interval.
+3. Fullfill the expectation in the completion block of the asynchronous operation.
+4. If the expectation is fullfilled before time out then test method is success or else it fails.
