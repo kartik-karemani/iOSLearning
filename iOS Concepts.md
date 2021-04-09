@@ -1,4 +1,3 @@
-# iOSLearning
 Description of ios topics.
 
 iOS Application Life Cycle :
@@ -19,8 +18,16 @@ UIApplication object sets up the run loop, which handles the user events. UIAppl
 
 When any event is occured it is added in event queue. Then sequentially it is passed to the run loop. UIApplicatiomn object decides to delegate the event to respective core object. 
 
+**View Controller Life Cycle Methods:**
+1. viewDidLoad - This is the first method which is called in the view controller class. This is called only once during the view controllers life time.
+2. viewWillAppear - Every time when user is navigating to a screen, just before the screen is displayed this method is called and this is called everytime user is navigated to screen.
+3. viewDidAppear - Every time when user is navigating to the screen, after the screen is displayed this method is called and this is called everytime user is navigated to screen.
+4. viewWillDisappear - This is method is called everytime just before user is navigating away from current screen to other screen.
+5. viewDidDisappear - This method is called everytime just after user is navigating away from current screen to other screen.
 
-          
+
+
+
           
 
          
