@@ -25,6 +25,14 @@ When any event is occured it is added in event queue. Then sequentially it is pa
 4. viewWillDisappear - This is method is called everytime just before user is navigating away from current screen to other screen.
 5. viewDidDisappear - This method is called everytime just after user is navigating away from current screen to other screen.
 
+**Application States:**
+Below are the iOS Application States:
+1. Not Running : The app is not running.
+2. InActive : The app is in foreground and not receving any events. For ex: Call or SMS.
+3. Active : The app is in foreground and receiving events.
+4. Background : App is in background and executing code.
+5. Suspended : App is in background and not executing any code.
+
 
 
 
