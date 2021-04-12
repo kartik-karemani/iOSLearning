@@ -33,7 +33,8 @@ Below are the iOS Application States:
 4. Background : App is in background and executing code.
 5. Suspended : App is in background and not executing any code.
 
-
+**Dependency Injection :**
+It is process where dependency of an object is injected to itself rather making that object to create the dependency itself inorder to avoid the tight coupling.
 
 
           
