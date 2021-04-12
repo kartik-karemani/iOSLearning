@@ -25,8 +25,9 @@ appDidFinishLaunch and viewDidLoad for the controller.
 UIApplicationObject setup the run loop during the launch. Run loop manages in processing of the events. UIApplicationObject is first object to receive the event.
 It delegates the app state events to ApplicationDelegate object and other evtns such as touch event is first submitted to window and it is then passed to the view on which touch has occured.
 
-
-
+**Mocking of object in unit testing**:
+Creating an object which confirms to behaviour of the object to which we are mocking to. Here we use protocol to achieve the same.
+Mocking an object is generally used to test other scenarios which is generally depends on the object which is mocked.
           
 
          
